@@ -4,6 +4,8 @@ This is just a simple example of a small CRUD app using Elixir, Postgres and the
 
 [Blog Post explaning the step by step can be found here](http://gogogarrett.sexy/programming-in-elixir-with-the-phoenix-framework-building-a-basic-CRUD-app/)
 
+[Template updated to newest Elixir and Phoenix by rambocoder](https://github.com/rambocoder/phoenix_crud/)
+
 # Installation
 
 To start your new Phoenix application you have to:
@@ -11,7 +13,7 @@ To start your new Phoenix application you have to:
 1. Install dependencies with `mix deps.get`
 2a. Start Phoenix router with `mix phoenix.server`
 2b. You can also start Phoenix with interactive Elixir shell `iex -S mix phoenix.server`
-3. Configure [Database Settings](https://github.com/gogogarrett/phoenix_crud/blob/master/lib%2Fphoenix_crud%2Frepo.ex) to use your local postgres enviorment.
+3. Configure Database Settings in `config/config.exs` to use your local postgres enviorment.
 4. Run the migrations `mix ecto.migrate PhoenixCrud.Repo`
 5. Enjoy.
 
@@ -19,10 +21,9 @@ Now you can visit `localhost:4000` from your browser.
 
 # Goals
 - Learn basic elixir.
-- Exploring the language and framework to see if it's worth using as a backend for more robust applications.
-- Provide more example apps using the [Phoenix Framework](https://github.com/phoenixframework/phoenix).
-- Have fun!
-
-# Comments
-
-Please feel free to open any PRs or issues if you see things that could be improved or fixed.
+- Create admin and non-admin users.
+- Provide authentication
+- Provide API for MongooseIM auth
+- Enable adding talks from Lambda Days
+- Enable rating talks by users and external API
+- Integrate with chat and streaming
