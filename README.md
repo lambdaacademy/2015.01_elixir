@@ -1,8 +1,10 @@
-# PhoenixCrud
+# 2015.01_elixir 
 
-This is just a simple example of a small CRUD app using Elixir, Postgres and the [Phoenix Framework](https://github.com/phoenixframework/phoenix).
+This is application, that will help during Lambda Days 2015 held in Cracow.
 
-[Blog Post explaning the step by step can be found here](http://gogogarrett.sexy/programming-in-elixir-with-the-phoenix-framework-building-a-basic-CRUD-app/)
+It uses Elixir, Postgres and the [Phoenix Framework](https://github.com/phoenixframework/phoenix).
+
+[Skeleton is based on this blog post](http://gogogarrett.sexy/programming-in-elixir-with-the-phoenix-framework-building-a-basic-CRUD-app/)
 
 [Template updated to newest Elixir and Phoenix by rambocoder](https://github.com/rambocoder/phoenix_crud/)
 
