@@ -1,4 +1,4 @@
-# 2015.01_elixir 
+# 2015.01_elixir  [![Build Status](https://api.travis-ci.org/lambdaacademy/2015.01_elixir.svg)](https://travis-ci.org/lambdaacademy/2015.01_elixir)
 
 This is application, that will help during Lambda Days 2015 held in Cracow.
 
