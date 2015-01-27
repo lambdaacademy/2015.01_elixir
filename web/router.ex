@@ -18,6 +18,8 @@ defmodule PhoenixCrud.Router do
     get "/", WelcomeController, :index, as: :root # this gives us root_path
     get "/pages/:page", PageController, :show, as: :page
     resources "/users", UserController
+    get "/signin", AuthController, :signin, as: :signin
+    post "/authenticate", AuthController, :authenticate
   end
 
   # Other scopes may use custom stacks.

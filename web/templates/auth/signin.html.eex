@@ -1,0 +1,17 @@
+<div class="col-md-12">
+  <h3>Sign In</h3>
+
+  <div class="actions">
+    <%= get_flash(@conn, :error) %>
+    <form action="/authenticate" method="post">
+      <input type="hidden" name="csrf_token" value="<%= csrf_token @conn %>" />
+      <div class="form-group">
+        <label for="user[email]">Email</label>
+        <input type="text" name="user[email]" class="form-control" />
+        <label for="user[password]">Password</label>
+        <input type="password" name="user[password]" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+  </div>
+</div>
