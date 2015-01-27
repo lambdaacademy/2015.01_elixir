@@ -6,6 +6,7 @@ defmodule PhoenixCrud.UserController do
   alias PhoenixCrud.Repo
 
   plug :authentication
+  plug :authorization
   plug :action
 
   defp authentication(conn, _options) do
@@ -13,6 +14,15 @@ defmodule PhoenixCrud.UserController do
       conn
     else
       halt(redirect(conn, to: Router.Helpers.signin_path(conn, :signin)))
+    end
+  end
+
+  defp authorization(conn, _options) do
+    user = get_session(conn, :user)
+    if user[:admin] do
+      conn
+    else
+      halt(redirect(conn, to: Router.Helpers.page_path(conn, :show, "unauthorized")))
     end
   end
 
