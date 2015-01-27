@@ -13,7 +13,7 @@
         <%= if !@user do %>
           <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>"> Sign In </a>
         <%= else %>
-          <div class="user-email"><%= @user %></div>
+          <div class="user-email"><%= @user[:email] %></div>
         <%= end %>
       </li>
     </ul>
