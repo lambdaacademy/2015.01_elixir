@@ -1,7 +1,11 @@
 use Mix.Config
 
 config :phoenix_crud, PhoenixCrud.Endpoint,
-  http: [port: System.get_env("PORT") || 4001]
+  http: [port: System.get_env("PORT") || 4000],
+  debug_errors: true,
+  cache_static_lookup: false
 
-# Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, :console, format: "[$level] $message\n"
+
+config :phoenix_crud, PhoenixCrud.Repo,
+  url: "ecto://username:password@localhost/phoenix_crud"
