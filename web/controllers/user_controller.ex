@@ -1,11 +1,30 @@
 defmodule PhoenixCrud.UserController do
   use Phoenix.Controller
-  
+
   alias PhoenixCrud.Router
   alias PhoenixCrud.User
   alias PhoenixCrud.Repo
 
+  plug :authentication
+  plug :authorization
   plug :action
+
+  defp authentication(conn, _options) do
+    if get_session(conn, :user) do
+      conn
+    else
+      halt(redirect(conn, to: Router.Helpers.signin_path(conn, :signin)))
+    end
+  end
+
+  defp authorization(conn, _options) do
+    user = get_session(conn, :user)
+    if user[:admin] do
+      conn
+    else
+      halt(redirect(conn, to: Router.Helpers.page_path(conn, :show, "unauthorized")))
+    end
+  end
 
   def index(conn, _params) do
     render conn, "index.html", users: Repo.all(User)
@@ -52,7 +71,7 @@ defmodule PhoenixCrud.UserController do
       nil ->
         Repo.update(user)
         # [g] really hacky way to redirect in the client.. (is there a better way?)
-        conn 
+        conn
         |> put_status(201)
         |> json %{location: Router.Helpers.user_path(conn, :show, user.id) }
       errors ->

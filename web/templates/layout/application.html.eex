@@ -14,7 +14,7 @@
 
   <body>
     <main role="main" class="container">
-      <%= render(PhoenixCrud.LayoutView, "nav.html", []) %>
+      <%= render(PhoenixCrud.LayoutView, "nav.html", [user: Plug.Conn.get_session(@conn, :user)]) %>
 
       <div class="row">
         <%= @inner %>

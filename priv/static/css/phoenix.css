@@ -93,3 +93,16 @@ body {
     border-bottom: 0;
   }
 }
+
+label {
+  margin-top: 7px;
+}
+
+.form-control {
+  width: 200px;
+}
+
+.user-email {
+  padding: 10px;
+  color: #428bca;
+}
