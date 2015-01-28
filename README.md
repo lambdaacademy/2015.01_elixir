@@ -12,6 +12,10 @@ It uses Elixir, Postgres and the [Phoenix Framework](https://github.com/phoenixf
 
 To start your new Phoenix application you have to:
 
+0. Copy and edit example dev config:
+
+    cp config/dev.example.exs config/dev.exs
+
 1. Install dependencies with `mix deps.get`
 2a. Start Phoenix router with `mix phoenix.server`
 2b. You can also start Phoenix with interactive Elixir shell `iex -S mix phoenix.server`
