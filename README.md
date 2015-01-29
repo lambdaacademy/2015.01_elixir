@@ -19,9 +19,8 @@ To start your new Phoenix application you have to:
 1. Install dependencies with `mix deps.get`
 2a. Start Phoenix router with `mix phoenix.server`
 2b. You can also start Phoenix with interactive Elixir shell `iex -S mix phoenix.server`
-3. Configure Database Settings in `config/config.exs` to use your local postgres enviorment.
-4. Run the migrations `mix ecto.migrate PhoenixCrud.Repo`
-5. Enjoy.
+3. Run the migrations `mix ecto.migrate PhoenixCrud.Repo`
+4. Enjoy.
 
 Now you can visit `localhost:4000` from your browser.
 
