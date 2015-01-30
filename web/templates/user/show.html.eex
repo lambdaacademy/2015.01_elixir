@@ -5,7 +5,7 @@
   </a>
 
   <h1>
-    User: <%= @user.content %>
+    User: <%= @user.email %>
   </h1>
 
   <div class="actions">

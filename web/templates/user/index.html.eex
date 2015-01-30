@@ -5,7 +5,7 @@
     <%= for user <- @users do %>
       <li>
         <a href="<%= Router.Helpers.user_path(@conn, :show, user.id) %>">
-          <%= user.content %> <%= user.id %>
+          <%= user.email %> <%= user.id %>
         </a>
       </li>
     <% end %>

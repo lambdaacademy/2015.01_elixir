@@ -55,7 +55,8 @@ defmodule PhoenixCrud.UserController do
   end
 
   def create(conn, %{"user" => params}) do
-    user = construct_user(params, nil)
+    user = %User{email: params["email"], password: params["password"],
+      admin: map_admin(params["admin"]), username: ensure_username(params)}
     case User.validate(user) do
       nil ->
         user = Repo.insert(user)
@@ -80,8 +81,8 @@ defmodule PhoenixCrud.UserController do
     authorization(conn, :user, id)
 
     user = Repo.get(User, id)
-    user = construct_user(params, user)
-
+    user = %User{user | email: params["email"], password: params["password"],
+      admin: map_admin(params["admin"]), username: ensure_username(params)}
     case User.validate(user) do
       nil ->
         Repo.update(user)
@@ -90,7 +91,7 @@ defmodule PhoenixCrud.UserController do
         |> put_status(201)
         |> json %{location: Router.Helpers.user_path(conn, :show, user.id) }
       errors ->
-        json conn, errors: errors
+        conn |> json %{errors: errors}
     end
   end
 
@@ -107,11 +108,19 @@ defmodule PhoenixCrud.UserController do
     end
   end
 
-  def construct_user(params, user) do
-    %User{user | email: params["email"], password: params["password"], admin: params["admin"], username: params["username"]}
-  end
-
   def current_user(conn) do
     get_session(conn, :user)
+  end
+
+  def map_admin(value) do
+    value == "on"
+  end
+
+  def ensure_username(params) do
+    if params["username"] != "" do
+      params["username"]
+    else
+      hd(String.split(params["email"], "@"))
+    end
   end
 end

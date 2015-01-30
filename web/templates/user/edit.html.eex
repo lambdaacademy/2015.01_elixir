@@ -5,7 +5,10 @@
     <form action="/users/<%= @user.id %>" method="post">
       <input type="hidden" name="csrf_token" value="<%= csrf_token @conn %>" />
       <div class="form-group">
-        <input type="text" name="user[content]" value="<%= @user.content %>" class="form-control" />
+        <p id="errors"></p>
+        <input type="text" name="user[email]" value="<%= @user.email %>" class="form-control" />
+        <input type="password" name="user[password]" value="<%= @user.password %>" class="form-control" />
+        <input type="text" name="user[username]" value="<%= @user.username %>" class="form-control" />
       </div>
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
@@ -23,7 +26,11 @@
       type: "PUT",
       data: $('form').serialize(),
       success: function(data) {
-        window.location = data.location;
+        if(data.errors) {
+          $("#errors").html("No fields can be blank.");
+        } else {
+          window.location = data.location;
+        }
       }
     });
   });
