@@ -15,7 +15,8 @@
         </li>
       <%= else %>
         <li>
-          <div class="user-email"><%= @user[:email] %></div>
+          <a href="<%= Router.Helpers.user_path(@conn, :show, 1) %>"><%= @user[:email] %></a>
+          <div class="user-email"></div>
         </li>
         <li>
           <a href="<%= Router.Helpers.logout_path(@conn, :logout) %>">Logout</a>
