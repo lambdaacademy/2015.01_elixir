@@ -9,13 +9,18 @@
       <li>
         <a href="<%= Router.Helpers.user_path(@conn, :index) %>"> Users </a>
       </li>
-      <li>
-        <%= if !@user do %>
+      <%= if !@user do %>
+        <li>
           <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>"> Sign In </a>
-        <%= else %>
+        </li>
+      <%= else %>
+        <li>
           <div class="user-email"><%= @user[:email] %></div>
-        <%= end %>
-      </li>
+        </li>
+        <li>
+          <a href="<%= Router.Helpers.logout_path(@conn, :logout) %>">Logout</a>
+        </li>
+      <%= end %>
     </ul>
   </div>
 </div>
