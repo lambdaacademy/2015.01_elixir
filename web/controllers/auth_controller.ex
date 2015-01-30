@@ -17,7 +17,7 @@ defmodule PhoenixCrud.AuthController do
       from u in User, where: u.email == ^params["email"], select: u)
     if user do
       if user.password == params["password"] do
-        conn = put_session(conn, :user, %{:email => user.email, :admin => user.admin})
+        conn = put_session(conn, :user, %{:email => user.email, :admin => user.admin, :id => user.id})
         redirect conn, to: "/"
       end
     end

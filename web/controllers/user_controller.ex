@@ -6,7 +6,7 @@ defmodule PhoenixCrud.UserController do
   alias PhoenixCrud.Repo
 
   plug :authentication
-  plug :authorization
+  plug :authorization, :admin
   plug :action
 
   defp authentication(conn, _options) do
@@ -17,11 +17,20 @@ defmodule PhoenixCrud.UserController do
     end
   end
 
-  defp authorization(conn, _options) do
-    user = get_session(conn, :user)
-    if user[:admin] do
-      conn
+  defp authorization(conn, :admin) do
+    if action_name(conn) in [:index, :new, :create, :destroy] do
+      if current_user(conn)[:admin] do
+        conn
+      else
+        halt(redirect(conn, to: Router.Helpers.page_path(conn, :show, "unauthorized")))
+      end
     else
+      conn
+    end
+  end
+
+  def authorization(conn, :user, id) do
+    if !(current_user(conn)[:admin] || {current_user(conn)[:id], ""} == Integer.parse(id)) do
       halt(redirect(conn, to: Router.Helpers.page_path(conn, :show, "unauthorized")))
     end
   end
@@ -31,6 +40,8 @@ defmodule PhoenixCrud.UserController do
   end
 
   def show(conn, %{"id" => id}) do
+    authorization(conn, :user, id)
+
     case Repo.get(User, id) do
       user when is_map(user) ->
         render conn, "show.html", user: user
@@ -43,8 +54,8 @@ defmodule PhoenixCrud.UserController do
     render conn, "new.html"
   end
 
-  def create(conn, %{"user" => %{"content" => content}}) do
-    user = %User{content: content}
+  def create(conn, %{"user" => params}) do
+    user = construct_user(params, nil)
     case User.validate(user) do
       nil ->
         user = Repo.insert(user)
@@ -55,6 +66,8 @@ defmodule PhoenixCrud.UserController do
   end
 
   def edit(conn, %{"id" => id}) do
+    authorization(conn, :user, id)
+
     case Repo.get(User, id) do
       user when is_map(user) ->
         render conn, "edit.html", user: user
@@ -64,8 +77,10 @@ defmodule PhoenixCrud.UserController do
   end
 
   def update(conn, %{"id" => id, "user" => params}) do
+    authorization(conn, :user, id)
+
     user = Repo.get(User, id)
-    user = %{user | content: params["content"]}
+    user = construct_user(params, user)
 
     case User.validate(user) do
       nil ->
@@ -90,5 +105,13 @@ defmodule PhoenixCrud.UserController do
       _ ->
         redirect conn, Router.Helpers.page_path(page: "unauthorized")
     end
+  end
+
+  def construct_user(params, user) do
+    %User{user | email: params["email"], password: params["password"], admin: params["admin"], username: params["username"]}
+  end
+
+  def current_user(conn) do
+    get_session(conn, :user)
   end
 end
