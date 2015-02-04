@@ -1,0 +1,13 @@
+<div class="col-md-12">
+  <h3>Talks</h3>
+
+  <ul>
+    <%= for talk <- @talks do %>
+    <li>
+    <a href="<%= Router.Helpers.talk_path(@conn, :show, talk.id) %>">
+      <%= title_with_score(talk) %>
+    </a>
+    <% end %>
+  </ul>
+
+</div>
