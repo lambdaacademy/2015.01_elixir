@@ -1,6 +1,9 @@
 defmodule PhoenixCrud.Talk do
   use Ecto.Model
 
+  validate talk,
+    title: present()
+
   schema "talks" do
     field :title,:string
     field :description, :string

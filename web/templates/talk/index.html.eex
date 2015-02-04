@@ -10,4 +10,7 @@
     <% end %>
   </ul>
 
+  <a href="<%= Router.Helpers.talk_path(@conn, :new) %>" class="btn btn-primary">
+    New Talk
+  </a>
 </div>

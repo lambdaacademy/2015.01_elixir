@@ -1,0 +1,15 @@
+<h1>New Talk</h1>
+
+<form action="/talks" method="post">
+  <input type="hidden" name="csrf_token" value="<%= csrf_token @conn %>"/>
+  <div class="form-group">
+    <%= if @errors != nil do %>
+      <p>Title field required.</p>
+    <% end %>
+    <label for="talk[title]">Title</label>
+    <input type="text" name="talk[title]" class="form-control" />
+    <label for="talk[description]">Description (up to 1000 chars)</label>
+    <input type="text" name="talk[description]" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>

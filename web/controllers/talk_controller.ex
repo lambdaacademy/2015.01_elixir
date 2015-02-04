@@ -30,6 +30,21 @@ defmodule PhoenixCrud.TalkController do
     end
   end
 
+  def new(conn, _) do
+    render conn, "new.html"
+  end
+
+  def create(conn, %{"talk" => params}) do
+    talk = %Talk{title: params["title"], description: params["description"]}
+    case Talk.validate(talk) do
+      nil ->
+        talk = Repo.insert(talk)
+        render conn, "show.html", talk: talk
+      errors ->
+        render conn, "new.html", talk: talk, errors: errors
+    end
+  end
+
   # to do, dać to do jakiegoś helpera
   def current_user(conn) do
     get_session(conn, :user)
