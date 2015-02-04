@@ -18,6 +18,11 @@
           <a href="<%= Router.Helpers.user_path(@conn, :show, 1) %>"><%= @user[:email] %></a>
           <div class="user-email"></div>
         </li>
+        <%= if @user.admin do %>
+        <li>
+          <a href="<%= Router.Helpers.talk_path(@conn, :index) %>">Talks</a>
+        </li>
+        <%= end %>
         <li>
           <a href="<%= Router.Helpers.logout_path(@conn, :logout) %>">Logout</a>
         </li>
