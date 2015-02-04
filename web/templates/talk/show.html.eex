@@ -1,0 +1,9 @@
+<div class="col-md-12">
+  <h2> <%= @talk.title %> </h2>
+
+  <div class="details">
+    <p> Description: <%= @talk.description %> </p>
+    <p> Votes: <%= votes_count(@talk) %>
+    <p> Score: <%= score(@talk) %> (<%=@talk.plus_votes%>/<%=@talk.zero_votes%>/<%=@talk.minus_votes%>)
+  </div>
+</div>

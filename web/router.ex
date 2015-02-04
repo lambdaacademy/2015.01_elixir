@@ -21,6 +21,7 @@ defmodule PhoenixCrud.Router do
     get "/signin", AuthController, :signin, as: :signin
     post "/authenticate", AuthController, :authenticate
     get "/logout", AuthController, :logout, as: :logout
+    resources "/talks", TalkController
   end
 
   # Other scopes may use custom stacks.
