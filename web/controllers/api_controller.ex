@@ -7,11 +7,11 @@ defmodule PhoenixCrud.ApiController do
 
   plug :action
 
-  defp getUserByEmail(email) do
+  defp get_user_by_email(email) do
     Repo.one( from u in User, where: u.email == ^email, select: u)
   end
 
-  def userExists(conn, params) do
+  def user_exists(conn, params) do
     user = getUserByEmail(params["user"])
     if user do
       text conn, "true"
@@ -20,7 +20,7 @@ defmodule PhoenixCrud.ApiController do
     end
   end
 
-  def checkPassword(conn, params) do
+  def check_password(conn, params) do
     user = getUserByEmail(params["user"])
     if user && user.password == params["password"] do
       text conn, "true"

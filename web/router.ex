@@ -26,7 +26,7 @@ defmodule PhoenixCrud.Router do
   # Other scopes may use custom stacks.
   scope "/api", PhoenixCrud do
     pipe_through :api
-    get "/user_exists", ApiController, :userExists
-    get "/check_password", ApiController, :checkPassword
+    get "/user_exists", ApiController, :user_exists
+    get "/check_password", ApiController, :check_password
   end
 end
