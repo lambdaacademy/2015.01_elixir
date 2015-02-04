@@ -12,7 +12,7 @@ defmodule PhoenixCrud.ApiController do
   end
 
   def user_exists(conn, params) do
-    user = getUserByEmail(params["user"])
+    user = get_user_by_email(params["user"])
     if user do
       text conn, "true"
     else
@@ -21,7 +21,7 @@ defmodule PhoenixCrud.ApiController do
   end
 
   def check_password(conn, params) do
-    user = getUserByEmail(params["user"])
+    user = get_user_by_email(params["user"])
     if user && user.password == params["password"] do
       text conn, "true"
     else
