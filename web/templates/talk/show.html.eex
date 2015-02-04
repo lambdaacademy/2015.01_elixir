@@ -6,4 +6,8 @@
     <p> Votes: <%= votes_count(@talk) %>
     <p> Score: <%= score(@talk) %> (<%=@talk.plus_votes%>/<%=@talk.zero_votes%>/<%=@talk.minus_votes%>)
   </div>
+  <div class="actions">
+    <a href="<%= Router.Helpers.talk_path(@conn, :edit, @talk.id) %>" class="btn btn-primary">
+      Edit
+    </a>
 </div>

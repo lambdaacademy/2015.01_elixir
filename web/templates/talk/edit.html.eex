@@ -1,0 +1,36 @@
+<div class="col-md-12">
+  <h3>Edit: <%= @talk.title %></h3>
+
+  <div class="actions">
+    <form action="/talks/<%= @talk.id %>" method="post">
+      <input type="hidden" name="csrf_token" value="<%= csrf_token @conn %>" />
+      <div class="form-group">
+        <p id="errors"></p>
+        <input type="text" name="talk[title]" value="<%= @talk.title %>" class="form-control" />
+        <input type="text" name="talk[description]" value="<%= @talk.description%>" class="form-control" />
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  $("form").on("submit", function(event) {
+    event.preventDefault();
+
+    $that = this;
+
+    $.ajax({
+      url: $that.getAttribute('action'),
+      type: "PUT",
+      data: $('form').serialize(),
+      success: function(data) {
+        if(data.errors) {
+          $("#errors").html("Title field must be filled.");
+        } else {
+          window.location = data.location;
+        }
+      }
+    });
+  });
+</script>

@@ -45,6 +45,28 @@ defmodule PhoenixCrud.TalkController do
     end
   end
 
+  def edit(conn, %{"id" => id}) do
+    talk = Repo.get(Talk, id)
+    if talk do
+      render conn, "edit.html", talk: talk
+    else
+      redirect conn, to: Router.Helpers.page_path(conn, :show, "unauthorized")
+    end
+  end
+
+  def update(conn, %{"id" => id, "talk" => params}) do
+    talk = Repo.get(Talk, id)
+    talk = %Talk{talk | title: params["title"], description: params["description"]}
+    case Talk.validate(talk) do
+      nil ->
+        Repo.update(talk)
+        conn
+        |> put_status(201)
+        |> json %{location: Router.Helpers.talk_path(conn, :show, talk.id) }
+      errors ->
+        conn |> json %{errors: errors}
+    end
+  end
   # to do, dać to do jakiegoś helpera
   def current_user(conn) do
     get_session(conn, :user)
