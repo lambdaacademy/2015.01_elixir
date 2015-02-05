@@ -32,3 +32,70 @@ Now you can visit `localhost:4000` from your browser.
 - Enable adding talks from Lambda Days
 - Enable rating talks by users and external API
 - Integrate with chat and streaming
+
+# Using `Talk Api`
+
+## Indexing all talks
+
+To take all talks from the database just go to the page: `talk_api/index`. Eg.
+
+```
+curl http://localhost:4000/talk_api/index
+```
+
+Sample response:
+```
+{
+  "talks":
+    [
+      {
+        "id":1,
+        "title":"sample_title",
+        "description":"sample_description"
+        "plus_votes":0,
+        "zero_votes":0,
+        "minus_votes":0,
+      },
+      {
+        "id":2,
+        "title":"sample_title_2",
+        "description":"sample_description_2"
+        "plus_votes":0,
+        "zero_votes":0,
+        "minus_votes":0,
+      }
+    ]
+}
+```
+
+## Add rate for the talk
+
+Prepare file request.txt with content:
+
+```
+{
+  "id":1,
+  "plus_votes":1,
+  "zero_votes":2,
+  "minus_votes":4
+}
+```
+and try to update talk using `talk_api/update` REST api:
+```
+curl -X POST -d @filename.txt http://localhost:4000/talk_api/update --header "Content-Type:application/json"
+```
+
+The result should be similar to the following:
+```
+{
+  "talk":
+    {
+      "id":1,
+      "title":"sample_title",
+      "description":"sample_description"
+      "plus_votes":1,
+      "zero_votes":2,
+      "minus_votes":4,
+    }
+}
+```
