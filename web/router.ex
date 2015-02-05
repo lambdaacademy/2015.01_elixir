@@ -12,6 +12,10 @@ defmodule PhoenixCrud.Router do
     plug :accepts, ~w(json)
   end
 
+  pipeline :talk_api do
+    plug :accepts, ~w(json)
+  end
+
   scope "/", PhoenixCrud do
     pipe_through :browser # Use the default browser stack
 
@@ -29,5 +33,11 @@ defmodule PhoenixCrud.Router do
     pipe_through :api
     get "/user_exists", ApiController, :user_exists
     get "/check_password", ApiController, :check_password
+  end
+
+  scope "/talk_api", PhoenixCrud do
+    pipe_through :talk_api
+    get "/index", TalkApiController, :index
+    post "/update", TalkApiController, :update
   end
 end
