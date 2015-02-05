@@ -82,7 +82,7 @@ Prepare file request.txt with content:
 ```
 and try to update talk using `talk_api/update` REST api:
 ```
-curl -X POST -d @filename.txt http://localhost:4000/talk_api/update --header "Content-Type:application/json"
+curl -X POST -d @request.txt http://localhost:4000/talk_api/update --header "Content-Type:application/json"
 ```
 
 The result should be similar to the following:
