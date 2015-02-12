@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.ApiController do
+defmodule PhoenixCrud.MongooseApiController do
   use Phoenix.Controller
   import Ecto.Query
 

@@ -1,4 +1,4 @@
-defmodule PhoenixMongooseApiTest do
+defmodule MongooseApiTest do
   use ExUnit.Case
   use Plug.Test
 
@@ -17,7 +17,7 @@ defmodule PhoenixMongooseApiTest do
 
   def action(verb, method, path,  params) do
     conn = conn(verb, path, params, []) |> Plug.Conn.fetch_params
-    controller = PhoenixCrud.ApiController
+    controller = PhoenixCrud.MongooseApiController
     controller.call(conn, controller.init(method))
   end
 
