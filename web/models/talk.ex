@@ -2,7 +2,11 @@ defmodule PhoenixCrud.Talk do
   use Ecto.Model
 
   validate talk,
-    title: present()
+    title: present(),
+    description: present(),
+    plus_votes: greater_than_or_equal_to(0),
+    zero_votes: greater_than_or_equal_to(0),
+    minus_votes: greater_than_or_equal_to(0)
 
   schema "talks" do
     field :title,:string
