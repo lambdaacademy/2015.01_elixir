@@ -39,7 +39,7 @@ defmodule PhoenixMongooseApiTest do
 
   test "check_password returns false if username or password is invalid" do
     params = %{user: "pawel", server: "lambdadays.org", pass: "invalidpass"}
-    response = action(:get, :chec_password,"/api/check_password", params)
+    response = action(:get, :check_password,"/api/check_password", params)
     assert response.resp_body == "false"
     assert response.state == :sent
     assert response.status == 200
