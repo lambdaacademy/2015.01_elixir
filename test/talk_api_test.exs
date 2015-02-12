@@ -1,4 +1,4 @@
-defmodule PhoenixCrudTest do
+defmodule TalkApiTest do
   use ExUnit.Case
   use Plug.Test
 
