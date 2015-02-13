@@ -3,12 +3,10 @@ defmodule PhoenixCrud.User do
 
   # has_format gives an error with message "is_valid" in the current state of the framework.
   validate user,
-    # email: has_format(~r/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/),
-    email: present(),
+    email: has_format(~r/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/),
     password: present(),
     admin: present(),
-    # username: has_format(~r/^[A-Z0-9_]$/)
-    username: present()
+    username: has_format(~r/^[a-zA-Z0-9_]+$/)
 
   schema "users" do
     field :content, :string
