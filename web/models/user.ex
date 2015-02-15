@@ -9,7 +9,6 @@ defmodule PhoenixCrud.User do
     username: has_format(~r/^[a-zA-Z0-9_]+$/)
 
   schema "users" do
-    field :content, :string
     field :email, :string
     field :password, :string
     field :admin, :boolean, default: false

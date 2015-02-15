@@ -5,8 +5,8 @@ defmodule MongooseApiTest do
   setup do
     Mix.Tasks.Ecto.Migrate.run(["--all", "PhoenixCrud.Repo"])
 
-    user = %PhoenixCrud.User{content: "pawel", email: "pawel@lambdaacademy.org",
-                             password: "pawel", admin: :false, username: "pawel"}
+    user = %PhoenixCrud.User{email: "pawel@lambdaacademy.org", password: "pawel",
+                             admin: :false, username: "pawel"}
     PhoenixCrud.Repo.insert(user)
 
     ## is it required ?

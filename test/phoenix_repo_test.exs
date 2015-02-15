@@ -11,7 +11,7 @@ defmodule PhoenixRepoTest do
   end
 
   test "add admin user to database", context do
-    user = %PhoenixCrud.User{content: "admin", email: "admin@admin.com", password: "admin", admin: :true, username: "admin"}
+    user = %PhoenixCrud.User{email: "admin@admin.com", password: "admin", admin: :true, username: "admin"}
     PhoenixCrud.Repo.insert(user)
     users = PhoenixCrud.Repo.all(PhoenixCrud.User)
     assert length(users) == 1
