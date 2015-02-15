@@ -6,13 +6,34 @@ defmodule PhoenixCrud.User do
     email: has_format(~r/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/),
     password: present(),
     admin: present(),
-    username: has_format(~r/^[a-zA-Z0-9_]+$/)
+    username: has_format(~r/^[a-zA-Z0-9_]+$/),
+    also: validate_uniqness
 
   schema "users" do
     field :email, :string
     field :password, :string
     field :admin, :boolean, default: false
     field :username, :string
+  end
+
+  def validate_uniqness(user) do
+    Map.merge(check_mail(user.email), check_username(user.username))
+  end
+
+  defp check_mail(mail) do
+    if find_by_email(mail) != nil do
+      %{ email: "is already in our database" }
+    else
+      %{}
+    end
+  end
+
+  defp check_username(username) do
+    if find_by_username(username) != nil do
+      %{ username: "is already in our database" }
+    else
+      %{}
+    end
   end
 
   def find_by_username(username) do

@@ -67,10 +67,15 @@ defmodule UserTest do
     refute PhoenixCrud.User.validate(user)
     assert PhoenixCrud.Repo.insert(user) != nil
 
+    assert PhoenixCrud.User.validate(user) != nil
     catch_error PhoenixCrud.Repo.insert(user)
+
     user = Map.merge(valid_user(), %{username: "another_nick"})
+    assert PhoenixCrud.User.validate(user) != nil
     catch_error PhoenixCrud.Repo.insert(user)
+
     user = Map.merge(valid_user(), %{email: "another@mail.com"})
+    assert PhoenixCrud.User.validate(user) != nil
     catch_error PhoenixCrud.Repo.insert(user)
   end
 
