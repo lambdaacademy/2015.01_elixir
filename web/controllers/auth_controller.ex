@@ -13,13 +13,11 @@ defmodule PhoenixCrud.AuthController do
   end
 
   def authenticate(conn, %{"user" => params}) do
-    user = Repo.one(
-      from u in User, where: u.email == ^params["email"], select: u)
-    if user do
-      if user.password == params["password"] do
-        conn = put_session(conn, :user, %{:email => user.email, :admin => user.admin, :id => user.id})
-        redirect conn, to: "/"
-      end
+    user = User.find_by_email(params["email"])
+
+    if user and user.password == params["password"] do
+      conn = put_session(conn, :user, %{:email => user.email, :admin => user.admin, :id => user.id})
+      redirect conn, to: "/"
     end
 
     conn = put_flash(conn, :error, "Wrong email, password combination.")

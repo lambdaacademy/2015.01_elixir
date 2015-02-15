@@ -14,4 +14,12 @@ defmodule PhoenixCrud.User do
     field :admin, :boolean, default: false
     field :username, :string
   end
+
+  def find_by_username(username) do
+    PhoenixCrud.Repo.one( from u in PhoenixCrud.User, where: u.username  == ^username, select: u)
+  end
+
+  def find_by_email(email) do
+    PhoenixCrud.Repo.one( from u in PhoenixCrud.User, where: u.email  == ^email, select: u)
+  end
 end

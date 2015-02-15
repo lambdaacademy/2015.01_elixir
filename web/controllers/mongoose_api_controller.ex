@@ -12,7 +12,7 @@ defmodule PhoenixCrud.MongooseApiController do
   end
 
   def user_exists(conn, params) do
-    user = get_user_by_username(params["user"])
+    user = User.find_by_username(params["user"])
     if user do
       text conn, "true"
     else
