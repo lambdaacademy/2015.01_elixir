@@ -1,4 +1,4 @@
-defmodule PingPong.Repo.Migrations.CreateUsers do
+defmodule LambdaDays.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def up do

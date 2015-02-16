@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.Repo.Migrations.CreateTalks do
+defmodule LambdaDays.Repo.Migrations.CreateTalks do
   use Ecto.Migration
 
   def up do

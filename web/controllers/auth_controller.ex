@@ -1,10 +1,10 @@
-defmodule PhoenixCrud.AuthController do
+defmodule LambdaDays.AuthController do
   use Phoenix.Controller
   import Ecto.Query
 
-  alias PhoenixCrud.Router
-  alias PhoenixCrud.User
-  alias PhoenixCrud.Repo
+  alias LambdaDays.Router
+  alias LambdaDays.User
+  alias LambdaDays.Repo
 
   plug :action
 

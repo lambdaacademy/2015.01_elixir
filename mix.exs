@@ -1,8 +1,8 @@
-defmodule PhoenixCrud.Mixfile do
+defmodule LambdaDays.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :phoenix_crud,
+    [app: :lambda_days,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: ["lib", "web"],
@@ -14,7 +14,7 @@ defmodule PhoenixCrud.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [mod: {PhoenixCrud, []},
+    [mod: {LambdaDays, []},
      applications: [:phoenix, :cowboy, :logger, :postgrex, :ecto]]
   end
 

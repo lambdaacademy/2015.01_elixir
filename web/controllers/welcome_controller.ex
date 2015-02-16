@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.WelcomeController do
+defmodule LambdaDays.WelcomeController do
   use Phoenix.Controller
 
   plug :action

@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.Repo.Migrations.AddUsernameToUsers do
+defmodule LambdaDays.Repo.Migrations.AddUsernameToUsers do
   use Ecto.Migration
 
   def up do

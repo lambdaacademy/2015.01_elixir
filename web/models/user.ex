@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.User do
+defmodule LambdaDays.User do
   use Ecto.Model
 
   # has_format gives an error with message "is_valid" in the current state of the framework.
@@ -37,10 +37,10 @@ defmodule PhoenixCrud.User do
   end
 
   def find_by_username(username) do
-    PhoenixCrud.Repo.one( from u in PhoenixCrud.User, where: u.username  == ^username, select: u)
+    LambdaDays.Repo.one( from u in LambdaDays.User, where: u.username  == ^username, select: u)
   end
 
   def find_by_email(email) do
-    PhoenixCrud.Repo.one( from u in PhoenixCrud.User, where: u.email  == ^email, select: u)
+    LambdaDays.Repo.one( from u in LambdaDays.User, where: u.email  == ^email, select: u)
   end
 end

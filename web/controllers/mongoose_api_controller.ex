@@ -1,9 +1,9 @@
-defmodule PhoenixCrud.MongooseApiController do
+defmodule LambdaDays.MongooseApiController do
   use Phoenix.Controller
   import Ecto.Query
 
-  alias PhoenixCrud.User
-  alias PhoenixCrud.Repo
+  alias LambdaDays.User
+  alias LambdaDays.Repo
 
   plug :action
 

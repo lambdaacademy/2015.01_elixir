@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.Router do
+defmodule LambdaDays.Router do
   use Phoenix.Router
 
   pipeline :browser do
@@ -16,7 +16,7 @@ defmodule PhoenixCrud.Router do
     plug :accepts, ~w(json)
   end
 
-  scope "/", PhoenixCrud do
+  scope "/", LambdaDays do
     pipe_through :browser # Use the default browser stack
 
     get "/", WelcomeController, :index, as: :root # this gives us root_path
@@ -29,13 +29,13 @@ defmodule PhoenixCrud.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", PhoenixCrud do
+  scope "/api", LambdaDays do
     pipe_through :api
     get "/user_exists", MongooseApiController, :user_exists
     get "/check_password", MongooseApiController, :check_password
   end
 
-  scope "/talk_api", PhoenixCrud do
+  scope "/talk_api", LambdaDays do
     pipe_through :talk_api
     get "/index", TalkApiController, :index
     post "/update", TalkApiController, :update

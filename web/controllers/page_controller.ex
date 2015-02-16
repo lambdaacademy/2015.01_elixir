@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.PageController do
+defmodule LambdaDays.PageController do
   use Phoenix.Controller
 
   plug :action

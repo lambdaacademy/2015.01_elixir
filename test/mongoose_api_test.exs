@@ -3,21 +3,21 @@ defmodule MongooseApiTest do
   use Plug.Test
 
   setup do
-    Mix.Tasks.Ecto.Migrate.run(["--all", "PhoenixCrud.Repo"])
+    Mix.Tasks.Ecto.Migrate.run(["--all", "LambdaDays.Repo"])
 
-    user = %PhoenixCrud.User{email: "pawel@lambdaacademy.org", password: "pawel",
+    user = %LambdaDays.User{email: "pawel@lambdaacademy.org", password: "pawel",
                              admin: :false, username: "pawel"}
-    PhoenixCrud.Repo.insert(user)
+    LambdaDays.Repo.insert(user)
 
     ## is it required ?
     on_exit fn ->
-      Mix.Tasks.Ecto.Rollback.run(["--all", "PhoenixCrud.Repo"])
+      Mix.Tasks.Ecto.Rollback.run(["--all", "LambdaDays.Repo"])
     end
   end
 
   def action(verb, method, path,  params) do
     conn = conn(verb, path, params, []) |> Plug.Conn.fetch_params
-    controller = PhoenixCrud.MongooseApiController
+    controller = LambdaDays.MongooseApiController
     controller.call(conn, controller.init(method))
   end
 

@@ -1,3 +1,3 @@
-defmodule PhoenixCrud.PageView do
-  use PhoenixCrud.View
+defmodule LambdaDays.PageView do
+  use LambdaDays.View
 end

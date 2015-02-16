@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.Repo.Migrations.AddConstraintsToUser do
+defmodule LambdaDays.Repo.Migrations.AddConstraintsToUser do
   use Ecto.Migration
 
   def up do

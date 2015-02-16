@@ -1,9 +1,9 @@
-defmodule PhoenixCrud.TalkApiController do
+defmodule LambdaDays.TalkApiController do
   use Phoenix.Controller
   import Ecto.Query
 
-  alias PhoenixCrud.Talk
-  alias PhoenixCrud.Repo
+  alias LambdaDays.Talk
+  alias LambdaDays.Repo
 
   plug :action
 
