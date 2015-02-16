@@ -13,5 +13,5 @@ before_script:
   - mix local.hex --force
   - mix deps.get --only test
   - psql -c 'create database lambda_days;' -U postgres
-  - mix ecto.migrate LamdaDays.Repo
+  - mix ecto.migrate LambdaDays.Repo
 script: mix test
