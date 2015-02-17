@@ -8,10 +8,10 @@ defmodule TalkApiTest do
   end
 
   setup do
-    Mix.Tasks.Ecto.Migrate.run(["--all", "PhoenixCrud.Repo"])
+    Mix.Tasks.Ecto.Migrate.run(["--all", "LambdaDays.Repo"])
 
     on_exit fn ->
-      Mix.Tasks.Ecto.Rollback.run(["--all", "PhoenixCrud.Repo"])
+      Mix.Tasks.Ecto.Rollback.run(["--all", "LambdaDays.Repo"])
     end
   end
 
@@ -27,7 +27,7 @@ defmodule TalkApiTest do
   end
 
   test "get list of talks using talk_api/index", context do
-    response = action(PhoenixCrud.TalkApiController,
+    response = action(LambdaDays.TalkApiController,
       :get,
       :index,
       context[:session_options])
@@ -37,20 +37,20 @@ defmodule TalkApiTest do
   end
 
   test "add votes for talks using talk_api/update", context do
-    talk = %PhoenixCrud.Talk{title: "sample talk",
+    talk = %LambdaDays.Talk{title: "sample talk",
                               description: "this is sample talk about some interesting stuff",
                               plus_votes: 1,
                               zero_votes: 2,
                               minus_votes: 4}
-    PhoenixCrud.Repo.insert(talk)
-    talk = PhoenixCrud.Repo.one(PhoenixCrud.Talk)
+    LambdaDays.Repo.insert(talk)
+    talk = LambdaDays.Repo.one(LambdaDays.Talk)
 
-    response = action(PhoenixCrud.TalkApiController,
+    response = action(LambdaDays.TalkApiController,
       :get,
       :update,
       context[:session_options],
       %{"id" => talk.id, "plus_votes" => 1, "zero_votes" => 2, "minus_votes" => 3})
-    talk_response = Poison.decode!(response.resp_body, as: %{"talk" => PhoenixCrud.Talk})
+    talk_response = Poison.decode!(response.resp_body, as: %{"talk" => LambdaDays.Talk})
 
     assert talk_response["talk"].plus_votes == 2
     assert talk_response["talk"].zero_votes == 4

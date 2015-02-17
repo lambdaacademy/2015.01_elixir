@@ -1,4 +1,4 @@
-defmodule PhoenixCrudTest do
+defmodule LambdaDaysTest do
   use ExUnit.Case
   use Plug.Test
 
@@ -19,7 +19,7 @@ defmodule PhoenixCrudTest do
   end
 
   test "frontpage should contain word CRUD", context do
-    response = action(PhoenixCrud.WelcomeController,
+    response = action(LambdaDays.WelcomeController,
                       :get,
                       :index,
                       context[:session_options])

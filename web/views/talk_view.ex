@@ -1,6 +1,6 @@
-defmodule PhoenixCrud.TalkView do
-  use PhoenixCrud.View
-  alias PhoenixCrud.Router
+defmodule LambdaDays.TalkView do
+  use LambdaDays.View
+  alias LambdaDays.Router
 
   def title_with_score(talk) do
     talk.title <> " (score: " <> to_string(score talk) <> ")"

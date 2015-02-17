@@ -1,5 +1,5 @@
-defmodule PhoenixCrud.ErrorView do
-  use PhoenixCrud.View
+defmodule LambdaDays.ErrorView do
+  use LambdaDays.View
 
   def render("404.html", _assigns) do
     "Page not found - 404"

@@ -6,7 +6,7 @@
 use Mix.Config
 
 # Configures the endpoint
-config :phoenix_crud, PhoenixCrud.Endpoint,
+config :lambda_days, LambdaDays.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "KV4Z62miGXOyhHY8QgJJM9nlnEHHt4ACEQyH6tnvI4gK8+ZALcg0wkNQVJt2vYaL",
   debug_errors: false

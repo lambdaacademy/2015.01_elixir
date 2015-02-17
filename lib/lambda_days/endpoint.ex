@@ -1,8 +1,8 @@
-defmodule PhoenixCrud.Endpoint do
-  use Phoenix.Endpoint, otp_app: :phoenix_crud
+defmodule LambdaDays.Endpoint do
+  use Phoenix.Endpoint, otp_app: :lambda_days
 
   plug Plug.Static,
-    at: "/", from: :phoenix_crud
+    at: "/", from: :lambda_days
 
   plug Plug.Logger
 
@@ -20,9 +20,9 @@ defmodule PhoenixCrud.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_phoenix_crud_key",
+    key: "_lambda_days_key",
     signing_salt: "DMvYZyHU",
     encryption_salt: "BLo9jMYR"
 
-  plug :router, PhoenixCrud.Router
+  plug :router, LambdaDays.Router
 end

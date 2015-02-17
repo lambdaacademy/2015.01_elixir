@@ -1,5 +1,5 @@
-defmodule PhoenixCrud.WelcomeView do
-  use PhoenixCrud.View
+defmodule LambdaDays.WelcomeView do
+  use LambdaDays.View
 
   def capitalize(string) do
     String.capitalize(string)

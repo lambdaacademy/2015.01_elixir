@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.Talk do
+defmodule LambdaDays.Talk do
   use Ecto.Model
 
   validate talk,

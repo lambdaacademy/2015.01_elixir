@@ -1,9 +1,9 @@
-defmodule PhoenixCrud.TalkController do
+defmodule LambdaDays.TalkController do
   use Phoenix.Controller
 
-  alias PhoenixCrud.Router
-  alias PhoenixCrud.Repo
-  alias PhoenixCrud.Talk
+  alias LambdaDays.Router
+  alias LambdaDays.Repo
+  alias LambdaDays.Talk
 
   plug :authorization, :admin
   plug :action

@@ -11,7 +11,7 @@ use Mix.Config
 # Where those two env variables point to a file on
 # disk for the key and cert.
 
-config :phoenix_crud, PhoenixCrud.Endpoint,
+config :lambda_days, LambdaDays.Endpoint,
   url: [host: "example.com"],
   http: [port: System.get_env("PORT")],
   secret_key_base: "KV4Z62miGXOyhHY8QgJJM9nlnEHHt4ACEQyH6tnvI4gK8+ZALcg0wkNQVJt2vYaL"
@@ -29,5 +29,5 @@ config :logger, level: :info
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
-#     config :phoenix_crud, PhoenixCrud.Endpoint, server: true
+#     config :lambda_days, LambdaDays.Endpoint, server: true
 #

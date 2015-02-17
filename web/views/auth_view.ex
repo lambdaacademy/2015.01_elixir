@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.AuthView do
-  use PhoenixCrud.View
-  alias PhoenixCrud.Router
+defmodule LambdaDays.AuthView do
+  use LambdaDays.View
+  alias LambdaDays.Router
 end

@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.Repo.Migrations.RemoveContentFromUsers do
+defmodule LambdaDays.Repo.Migrations.RemoveContentFromUsers do
   use Ecto.Migration
 
   def up do

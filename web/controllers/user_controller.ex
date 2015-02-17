@@ -1,9 +1,9 @@
-defmodule PhoenixCrud.UserController do
+defmodule LambdaDays.UserController do
   use Phoenix.Controller
 
-  alias PhoenixCrud.Router
-  alias PhoenixCrud.User
-  alias PhoenixCrud.Repo
+  alias LambdaDays.Router
+  alias LambdaDays.User
+  alias LambdaDays.Repo
 
   plug :authentication
   plug :authorization, :admin

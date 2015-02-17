@@ -1,4 +1,4 @@
-defmodule PhoenixCrud.Repo.Migrations.AddEmailPasswordAndAdminToUsers do
+defmodule LambdaDays.Repo.Migrations.AddEmailPasswordAndAdminToUsers do
   use Ecto.Migration
 
   def up do
