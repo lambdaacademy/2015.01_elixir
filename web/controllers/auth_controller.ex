@@ -15,7 +15,7 @@ defmodule LambdaDays.AuthController do
   def authenticate(conn, %{"user" => params}) do
     user = User.find_by_email(params["email"])
 
-    if user and user.password == params["password"] do
+    if user != nil and user.password == params["password"] do
       conn = put_session(conn, :user, %{:email => user.email, :admin => user.admin, :id => user.id})
       redirect conn, to: "/"
     end
