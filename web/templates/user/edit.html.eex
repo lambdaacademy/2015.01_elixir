@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <h3>Edit: <%= @user.content %></h3>
+  <h3>Edit: <%= @user.username %></h3>
 
   <div class="actions">
     <form action="/users/<%= @user.id %>" method="post">
