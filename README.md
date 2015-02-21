@@ -17,10 +17,16 @@ To start your new Phoenix application you have to:
     cp config/dev.example.exs config/dev.exs
 
 1. Install dependencies with `mix deps.get`
-2a. Start Phoenix router with `mix phoenix.server`
-2b. You can also start Phoenix with interactive Elixir shell `iex -S mix phoenix.server`
-3. Run the migrations `mix ecto.migrate LambdaDays.Repo`
-4. Enjoy.
+2. Run the migrations `mix ecto.migrate LambdaDays.Repo`
+3. Start Phoenix router with `mix phoenix.server`
+4. Kill it with Ctrl-C Ctrl-C
+5. You can also start Phoenix with interactive Elixir shell `iex -S mix phoenix.server`
+6. Add first user to database:
+
+    admin = %LambdaDays.User{admin: true, email: "admin@lambdadays.org", password: "admin", username: "admin"}
+    LambdaDays.Repo.insert admin
+
+7. Enjoy.
 
 Now you can visit `localhost:4000` from your browser.
 
