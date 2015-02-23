@@ -6,21 +6,21 @@
   </div>
   <div class="col-md-6">
     <ul class="nav nav-pills pull-right">
-      <li>
-        <a href="<%= Router.Helpers.user_path(@conn, :index) %>"> Users </a>
-      </li>
       <%= if !@user do %>
         <li>
           <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>"> Sign In </a>
         </li>
       <%= else %>
         <li>
-          <a href="<%= Router.Helpers.user_path(@conn, :show, 1) %>"><%= @user[:email] %></a>
+          <a href="<%= Router.Helpers.user_path(@conn, :show, @user.id) %>"><%= @user[:email] %></a>
           <div class="user-email"></div>
         </li>
         <%= if @user.admin do %>
         <li>
           <a href="<%= Router.Helpers.talk_path(@conn, :index) %>">Talks</a>
+        </li>
+        <li>
+          <a href="<%= Router.Helpers.user_path(@conn, :index) %>"> Users </a>
         </li>
         <%= end %>
         <li>
