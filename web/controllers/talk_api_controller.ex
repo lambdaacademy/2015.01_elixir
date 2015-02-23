@@ -11,29 +11,38 @@ defmodule LambdaDays.TalkApiController do
     json conn, %{talks: Repo.all(Talk)}
   end
 
-  def update(conn, talk_rating) do
+  def update(conn, %{"id" => id,
+                     "zero_votes" => zero_votes,
+                     "plus_votes" => plus_votes,
+                     "minus_votes" => minus_votes}) do
     x = (Repo.transaction( fn ->
-      case Repo.get(Talk, talk_rating["id"]) do
+      case Repo.get(Talk, id) do
         talk when is_map(talk) ->
           talk = %LambdaDays.Talk{
                    talk |
-                   plus_votes: talk_rating["plus_votes"],
-                   zero_votes: talk_rating["zero_votes"],
-                   minus_votes: talk_rating["minus_votes"]}
-          IO.puts inspect talk
+                   plus_votes: plus_votes,
+                   zero_votes: zero_votes, 
+                   minus_votes: minus_votes}
           Repo.update(talk)
-          %{talk: Repo.get(Talk, talk_rating["id"])}
-        _ -> %{error: "Talk with given id was not found"}
+          %{talk: Repo.get(Talk, id)}
+        _ ->
+          %{error: "Talk with given id was not found"}
       end
     end))
 
     case x do
-      {:ok, message} -> json conn, message
-      _ -> json conn, %{error: "Error during executing transaction"}
+      {:ok, message} ->
+        json conn, message
+      _ ->
+        conn
+        |> put_status(:bad_request)
+        |> json %{error: "Error during executing transaction"}
     end
   end
 
   def update(conn, _params) do
-    json conn, %{error: "Wrong parameters"}
+    conn
+    |> put_status(:bad_request)
+    |> json %{error: "Wrong parameters"}
   end
 end
