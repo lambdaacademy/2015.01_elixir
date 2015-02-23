@@ -56,8 +56,10 @@ defmodule LambdaDays.UserController do
   end
 
   def create(conn, %{"user" => params}) do
-    user = %User{email: params["email"], password: params["password"],
-      admin: map_admin(params["admin"]), username: ensure_username(params)}
+    user = %User{email: params["email"],
+                 password: params["password"],
+                 admin: map_admin(params["admin"]),
+                 username: ensure_username(params)}
     case User.validate(user) do
       nil ->
         user = Repo.insert(user)
@@ -79,12 +81,12 @@ defmodule LambdaDays.UserController do
   end
 
   def update(conn, %{"id" => id, "user" => params}) do
+    IO.puts inspect params
     authorization(conn, :user, id)
 
     user = Repo.get(User, id)
     user = %User{user | email: params["email"],
                  password: params["password"],
-                 admin: map_admin(params["admin"]),
                  username: ensure_username(params)}
     case User.validate(user) do
       nil ->
