@@ -17,19 +17,21 @@ defmodule LambdaDays.User do
   end
 
   def validate_uniqness(user) do
-    Map.merge(check_mail(user.email), check_username(user.username))
+    Map.merge(check_email(user), check_username(user))
   end
 
-  defp check_mail(mail) do
-    if find_by_email(mail) != nil do
+  defp check_email(user) do
+    found_user = find_by_email(user.email)
+    if found_user != nil and found_user.id != user.id do
       %{ email: "is already in our database" }
     else
       %{}
     end
   end
 
-  defp check_username(username) do
-    if find_by_username(username) != nil do
+  defp check_username(user) do
+    found_user = find_by_username(user.username)
+    if found_user != nil and found_user.id != user.id do
       %{ username: "is already in our database" }
     else
       %{}

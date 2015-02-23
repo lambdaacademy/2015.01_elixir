@@ -36,6 +36,7 @@ defmodule LambdaDays.UserController do
   end
 
   def index(conn, _params) do
+    IO.puts inspect conn
     render conn, "index.html", users: Repo.all(User)
   end
 
@@ -81,8 +82,10 @@ defmodule LambdaDays.UserController do
     authorization(conn, :user, id)
 
     user = Repo.get(User, id)
-    user = %User{user | email: params["email"], password: params["password"],
-      admin: map_admin(params["admin"]), username: ensure_username(params)}
+    user = %User{user | email: params["email"],
+                 password: params["password"],
+                 admin: map_admin(params["admin"]),
+                 username: ensure_username(params)}
     case User.validate(user) do
       nil ->
         Repo.update(user)
