@@ -11,15 +11,18 @@ defmodule LambdaDays.TalkApiController do
     json conn, %{talks: Repo.all(Talk)}
   end
 
-  def update(conn, %{"id" => id, "zero_votes" => zero_votes, "plus_votes" => plus_votes, "minus_votes" => minus_votes}) do
+  def update(conn, talk_rating) do
     x = (Repo.transaction( fn ->
-      case Repo.get(Talk, id) do
+      case Repo.get(Talk, talk_rating["id"]) do
         talk when is_map(talk) ->
-          talk_updated = Map.merge(talk, %{plus_votes: talk.plus_votes + plus_votes,
-                                          minus_votes: talk.minus_votes + minus_votes,
-                                          zero_votes: talk.zero_votes + zero_votes})
-          Repo.update(talk_updated)
-          %{talk: Repo.get(Talk, id)}
+          talk = %LambdaDays.Talk{
+                   talk |
+                   plus_votes: talk_rating["plus_votes"],
+                   zero_votes: talk_rating["zero_votes"],
+                   minus_votes: talk_rating["minus_votes"]}
+          IO.puts inspect talk
+          Repo.update(talk)
+          %{talk: Repo.get(Talk, talk_rating["id"])}
         _ -> %{error: "Talk with given id was not found"}
       end
     end))

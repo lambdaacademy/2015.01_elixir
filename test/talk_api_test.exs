@@ -52,9 +52,9 @@ defmodule TalkApiTest do
       %{"id" => talk.id, "plus_votes" => 1, "zero_votes" => 2, "minus_votes" => 3})
     talk_response = Poison.decode!(response.resp_body, as: %{"talk" => LambdaDays.Talk})
 
-    assert talk_response["talk"].plus_votes == 2
-    assert talk_response["talk"].zero_votes == 4
-    assert talk_response["talk"].minus_votes == 7
+    assert talk_response["talk"].plus_votes == 1
+    assert talk_response["talk"].zero_votes == 2
+    assert talk_response["talk"].minus_votes == 3
     assert response.state == :sent
     assert response.status == 200
   end
