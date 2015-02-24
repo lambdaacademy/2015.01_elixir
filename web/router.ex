@@ -20,6 +20,7 @@ defmodule LambdaDays.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", WelcomeController, :index, as: :root # this gives us root_path
+    get "/room/:room", RoomController, :index, as: :page
     get "/pages/:page", PageController, :show, as: :page
     resources "/users", UserController
     get "/signin", AuthController, :signin, as: :signin

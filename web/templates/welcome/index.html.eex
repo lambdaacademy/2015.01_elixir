@@ -1,5 +1,7 @@
-<div class="jumbotron">
-    <h2>Simple CRUD app using Phoenix and Elixir!</h2>
-    <p class="lead">First try at getting a basic crud app up and working with Phoenix.</p>
-    
-  </div>
+<ul>
+  <li><a href="/room/1">Room 1</a></li>
+  <li><a href="/room/2">Room 2</a></li>
+  <li><a href="/room/3">Room 3</a></li>
+  <li><a href="/room/4">Room 4</a></li>
+</ul>
+  
