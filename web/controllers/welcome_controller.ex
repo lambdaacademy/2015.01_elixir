@@ -4,6 +4,7 @@ defmodule LambdaDays.WelcomeController do
   plug :action
 
   def index(conn, _params) do
-    render conn, "index.html"
+    user = Plug.Conn.get_session(conn, :user)
+    render conn, "index.html", user: user
   end
 end

@@ -1,7 +1,10 @@
+<%= if !@user do %>
+<a href="<%= Router.Helpers.signin_path(@conn, :signin) %>">Please sign in</a>
+<%= else %>
 <ul>
   <li><a href="/room/1">Room 1</a></li>
   <li><a href="/room/2">Room 2</a></li>
   <li><a href="/room/3">Room 3</a></li>
   <li><a href="/room/4">Room 4</a></li>
 </ul>
-  
+<%= end %>
