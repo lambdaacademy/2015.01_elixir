@@ -23,7 +23,7 @@ defmodule LambdaDaysTest do
                       :get,
                       :index,
                       context[:session_options])
-    assert String.contains?(response.resp_body, "CRUD")
+    assert String.contains?(response.resp_body, "Room")
     assert response.state == :sent
     assert response.status == 200
   end
