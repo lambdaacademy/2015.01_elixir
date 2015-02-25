@@ -12,12 +12,12 @@
 					//     -> fetch info from server (NOTE: does only work with openfire server)
 					//   ['test@conference.example.com']
 					//     -> array of rooms to join after connecting
-					autojoin: ['asdf@muc.localhost'] 
+					autojoin: ['track1@muc.localhost'] 
 				},
 				view: { assets: '/candy_assets/' }
 			});
 
-			Candy.Core.connect();
+      Candy.Core.connect('<% '@user.username', '@user.password')
 
 			/**
 			 * Thanks for trying Candy!
