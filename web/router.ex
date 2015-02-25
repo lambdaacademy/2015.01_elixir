@@ -34,6 +34,7 @@ defmodule LambdaDays.Router do
     pipe_through :api
     get "/user_exists", MongooseApiController, :user_exists
     get "/check_password", MongooseApiController, :check_password
+    get "/get_password", MongooseApiController, :get_password
   end
 
   scope "/talk_api", LambdaDays do

@@ -28,4 +28,14 @@ defmodule LambdaDays.MongooseApiController do
       text conn, "false"
     end
   end
+
+  def get_password(conn, params) do
+    user = get_user_by_username(params["user"])
+    if user do
+      text conn, user.password
+    else
+      text conn, "false"
+    end
+  end
+
 end
