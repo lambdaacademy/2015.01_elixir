@@ -1,44 +1,5 @@
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src="/js/libs.min.js"></script>
-	<script type="text/javascript" src="/js/candy.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			Candy.init('http://xmpp.lambdadays.org/http-bind/', {
-				core: {
-					// only set this to true if developing / debugging errors
-					debug: true,
-					// autojoin is a *required* parameter if you don't have a plugin (e.g. roomPanel) for it
-					//   true
-					//     -> fetch info from server (NOTE: does only work with openfire server)
-					//   ['test@conference.example.com']
-					//     -> array of rooms to join after connecting
-					autojoin: ['track1@muc.localhost'] 
-				},
-				view: { assets: '/candy_assets/' }
-			});
-
-      Candy.Core.connect('<%= @user.username %>@localhost', '<%= @user.password %>')
-
-			/**
-			 * Thanks for trying Candy!
-			 *
-			 * If you need more information, please see here:
-			 *   - Setup instructions & config params: http://candy-chat.github.io/candy/#setup
-			 *   - FAQ & more: https://github.com/candy-chat/candy/wiki
-			 *
-			 * Mailinglist for questions:
-			 *   - http://groups.google.com/group/candy-chat
-			 *
-			 * Github issues for bugs:
-			 *   - https://github.com/candy-chat/candy/issues
-			 */
-		});
-	</script>
-
 <div class="col-md-12">
   Room <%= @room %>
-  <div class="video">
-  </div>
-  <div class="chat" id="candy">
-  </div>
+  <iframe frameborder="0" style="width:640px; height:480px;" src="http://31.172.186.58:80/<%= @stream %>/embed.html?dvr=false&proto=hls"></iframe>
+  <iframe frameborder="0" style="width:100%; height:800px;" src="http://xmpp.lambdadays.org/chat/<%= @room %>"></iframe>
 </div>
