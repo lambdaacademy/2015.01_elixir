@@ -119,25 +119,32 @@ label {
 }
 
 .header {
-  margin: 0px;
+  margin: 0px auto;
   background-color: #333;
-  padding: 10px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 20px 50px;
   color: white;
   margin-bottom: 20px;
 }
 
-.header a {
-  color: white;
-  font-size: 30px;
+.header h1 {
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 
 body {
-  padding: 0px;
+  /* padding: 0px; */
 }
 
-.nav>li>a:hover {
-    background-color: #333;
-    color: #666;
+.nav li a {
+  color: #666;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.nav li a:hover {
+  background-color: #333;
+  color: #aaa;
 }
