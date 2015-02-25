@@ -1,33 +1,31 @@
-<div class="row">
-  <div class="col-md-6">
-    <h1>
+<div class="header">
+  <div class="row">
+    <h1 style="float: left">
       <a href="<%= Router.Helpers.root_path(@conn, :index) %>">
-        <img class="lambda-logo" src="/images/lambda_days_logo.png">
+        <img class="lambda-logo" src="/images/lambda_days_logo2.png">
       </a>
     </h1>
-  </div>
-  <div class="col-md-6">
-    <ul class="nav nav-pills pull-right">
+    <ul class="nav nav-pills pull-right" id="nav">
       <%= if !@user do %>
-        <li>
-          <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>"> Sign In </a>
-        </li>
+      <li>
+        <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>"> Sign In </a>
+      </li>
       <%= else %>
-        <li>
-          <a href="<%= Router.Helpers.user_path(@conn, :show, @user.id) %>"><%= @user[:email] %></a>
-          <div class="user-email"></div>
-        </li>
-        <%= if @user.admin do %>
-        <li>
-          <a href="<%= Router.Helpers.talk_path(@conn, :index) %>">Talks</a>
-        </li>
-        <li>
-          <a href="<%= Router.Helpers.user_path(@conn, :index) %>"> Users </a>
-        </li>
-        <%= end %>
-        <li>
-          <a href="<%= Router.Helpers.logout_path(@conn, :logout) %>">Logout</a>
-        </li>
+      <li>
+        <a href="<%= Router.Helpers.user_path(@conn, :show, @user.id) %>"><%= @user[:email] %></a>
+        <div class="user-email"></div>
+      </li>
+      <%= if @user.admin do %>
+      <li>
+        <a href="<%= Router.Helpers.talk_path(@conn, :index) %>">Talks</a>
+      </li>
+      <li>
+        <a href="<%= Router.Helpers.user_path(@conn, :index) %>"> Users </a>
+      </li>
+      <%= end %>
+      <li>
+        <a href="<%= Router.Helpers.logout_path(@conn, :logout) %>">Logout</a>
+      </li>
       <%= end %>
     </ul>
   </div>

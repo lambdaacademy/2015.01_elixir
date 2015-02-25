@@ -102,10 +102,6 @@ label {
   width: 200px;
 }
 
-.lambda-logo {
-  width: 100px;
-}
-
 .video {
   width: 640px;
   height: 480px;
@@ -120,4 +116,28 @@ label {
   background: #eeeeee;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.header {
+  margin: 0px;
+  background-color: #333;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.header a {
+  color: white;
+  font-size: 30px;
+}
+
+body {
+  padding: 0px;
+}
+
+.nav>li>a:hover {
+    background-color: #333;
+    color: #666;
 }
