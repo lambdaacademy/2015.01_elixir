@@ -1,1 +1,7 @@
-Room <%= @room %>
+<div class="col-md-12">
+  Room <%= @room %>
+  <div class="video">
+  </div>
+  <div class="chat">
+  </div>
+</div>

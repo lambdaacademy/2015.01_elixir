@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <%= if !@user do %>
 <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>">Please sign in</a>
 <%= else %>
@@ -8,3 +9,4 @@
   <li><a href="/room/4">Room 4</a></li>
 </ul>
 <%= end %>
+</div>

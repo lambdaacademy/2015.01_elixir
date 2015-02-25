@@ -13,6 +13,8 @@
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>
+
+  <p>Your password is storred in database with plain text. You have been warned.</p>
 </div>
 
 <script>
