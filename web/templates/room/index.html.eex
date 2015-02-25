@@ -17,7 +17,7 @@
 				view: { assets: '/candy_assets/' }
 			});
 
-      Candy.Core.connect('<% '@user.username', '@user.password')
+      Candy.Core.connect('<%= @user.username %>@localhost', '<%= @user.password %>')
 
 			/**
 			 * Thanks for trying Candy!

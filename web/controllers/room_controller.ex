@@ -15,7 +15,8 @@ defmodule LambdaDays.RoomController do
   end
 
   def index(conn, params) do
-    IO.puts inspect params
-    render conn, "index.html", room: params["room"]
+    user = Plug.Conn.get_session(conn, :user)
+    user = LambdaDays.Repo.get(LambdaDays.User, user.id)
+    render conn, "index.html", room: params["room"], user: user
   end
 end
