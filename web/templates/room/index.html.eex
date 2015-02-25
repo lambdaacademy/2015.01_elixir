@@ -3,7 +3,7 @@
 	<script type="text/javascript" src="/js/candy.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			Candy.init('http://192.168.59.103:5280/http-bind/', {
+			Candy.init('http://xmpp.lambdadays.org/http-bind/', {
 				core: {
 					// only set this to true if developing / debugging errors
 					debug: true,
