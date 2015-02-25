@@ -18,12 +18,12 @@ defmodule LambdaDaysTest do
     controller.call(conn, controller.init(action))
   end
 
-  test "frontpage should contain word CRUD", context do
+  test "frontpage should contain logo", context do
     response = action(LambdaDays.WelcomeController,
                       :get,
                       :index,
                       context[:session_options])
-    assert String.contains?(response.resp_body, "Room")
+    assert String.contains?(response.resp_body, "lambda_days_logo.png")
     assert response.state == :sent
     assert response.status == 200
   end
