@@ -1,23 +1,21 @@
 <div class="col-md-12">
-  <h3>Sign In</h3>
+  <h3>Register</h3>
 
   <div class="actions">
     <%= get_flash(@conn, :error) %>
-    <%= if @errors do %>
-    <%= for {field, message} <- @errors do %>
-        <p><%= field %>
-        <%= message %></p>
-    <%= end %>
-    <%= end %>
-    <form action="/authenticate" method="post">
+    <form action="/register" method="post">
       <input type="hidden" name="csrf_token" value="<%= csrf_token @conn %>" />
       <div class="form-group">
         <label for="user[email]">Email</label>
         <input type="text" name="user[email]" class="form-control" />
         <label for="user[password]">Password</label>
         <input type="password" name="user[password]" class="form-control" />
+        <label for="user[username]">Username</label>
+        <input type="text" name="user[username]" class="form-control" />
       </div>
-      <button type="submit" class="btn btn-primary">Sign In</button>
+      <button type="submit" class="btn btn-primary">Register</button>
     </form>
   </div>
+
+  <p>Warning: There is no SSL and passwords are stored in plain text. However, the app might be still fun to use. Enjoy!</p>
 </div>

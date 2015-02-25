@@ -81,7 +81,6 @@ defmodule LambdaDays.UserController do
   end
 
   def update(conn, %{"id" => id, "user" => params}) do
-    IO.puts inspect params
     authorization(conn, :user, id)
 
     user = Repo.get(User, id)

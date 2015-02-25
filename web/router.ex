@@ -25,6 +25,8 @@ defmodule LambdaDays.Router do
     get "/pages/:page", PageController, :show, as: :page
     resources "/users", UserController
     get "/signin", AuthController, :signin, as: :signin
+    get "/register", AuthController, :register, as: :register
+    post "/register", AuthController, :create
     post "/authenticate", AuthController, :authenticate
     get "/logout", AuthController, :logout, as: :logout
     resources "/talks", TalkController

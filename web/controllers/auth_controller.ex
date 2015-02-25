@@ -12,6 +12,24 @@ defmodule LambdaDays.AuthController do
     render conn, "signin.html"
   end
 
+  def register(conn, _params) do
+    render conn, "register.html"
+  end
+
+  def create(conn, %{"user" => params}) do
+    user = %User{email: params["email"],
+                 password: params["password"],
+                 admin: false,
+                 username: params["username"]}
+    case User.validate(user) do
+      nil ->
+        user = Repo.insert(user)
+        render conn, "signin.html", errors: [{:registration, "succesfull"}]
+      errors ->
+        render conn, "signin.html", errors: errors
+    end
+  end
+
   def authenticate(conn, %{"user" => params}) do
     user = User.find_by_email(params["email"])
 

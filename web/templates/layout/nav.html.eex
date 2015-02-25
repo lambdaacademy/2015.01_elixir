@@ -10,6 +10,9 @@
       <li>
         <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>"> Sign In </a>
       </li>
+      <li>
+        <a href="<%= Router.Helpers.register_path(@conn, :register) %>"> Register </a>
+      </li>
       <%= else %>
       <li>
         <a href="<%= Router.Helpers.user_path(@conn, :show, @user.id) %>"><%= @user[:email] %></a>
