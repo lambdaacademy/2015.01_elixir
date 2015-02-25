@@ -1,18 +1,24 @@
 <div class="header">
   <div class="row">
-    <h1 style="float: left">
+    <div class="col-md-4 col-xs-6 col-sm-6">
+    <h1>
       <a href="<%= Router.Helpers.root_path(@conn, :index) %>">
         <img class="lambda-logo" src="/images/lambda_days_logo2.png">
       </a>
     </h1>
+  </div>
+  <div class="col-md-8 col-xs-6 col-sm-6">
     <ul class="nav nav-pills pull-right" id="nav">
+      <li>
+        <a href="<%= Router.Helpers.root_path(@conn, :index) %>">Dashboard</a>
+      </li>
       <%= if !@user do %>
       <li>
         <a href="<%= Router.Helpers.signin_path(@conn, :signin) %>"> Sign In </a>
       </li>
       <%= else %>
       <li>
-        <a href="<%= Router.Helpers.user_path(@conn, :show, @user.id) %>"><%= @user[:email] %></a>
+        <a style="text-transform: none;" href="<%= Router.Helpers.user_path(@conn, :show, @user.id) %>"><%= @user[:email] %></a>
         <div class="user-email"></div>
       </li>
       <%= if @user.admin do %>
@@ -28,5 +34,6 @@
       </li>
       <%= end %>
     </ul>
+  </div>
   </div>
 </div>
