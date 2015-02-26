@@ -1,8 +1,11 @@
 <div class="col-md-12">
 
-  <a href="<%= Router.Helpers.user_path(@conn, :index)%>" class="btn btn-default btn-sm">
-    Back
-  </a>
+
+  <%= if @user.admin do %>
+    <a href="<%= Router.Helpers.user_path(@conn, :index)%>" class="btn btn-default btn-sm">
+      Back
+    </a>
+  <%= end %>
 
   <h1>
     User: <%= @user.email %>
