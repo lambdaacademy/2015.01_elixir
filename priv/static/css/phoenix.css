@@ -148,3 +148,12 @@ body {
   background-color: #333;
   color: #aaa;
 }
+
+.footer {
+  margin-top: 100px;
+}
+
+.footer .row {
+  width: 800px;
+  margin: 0 auto;
+}

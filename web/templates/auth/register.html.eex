@@ -1,6 +1,10 @@
 <div class="col-md-12">
   <h3>Register</h3>
 
+  <div class="alert alert-danger" role="alert">
+    Warning: There is no SSL and passwords are stored in plain text. However, the app might be still fun to use. Enjoy!
+  </div>
+
   <div class="actions">
     <%= get_flash(@conn, :error) %>
     <form action="/register" method="post">
@@ -17,5 +21,4 @@
     </form>
   </div>
 
-  <p>Warning: There is no SSL and passwords are stored in plain text. However, the app might be still fun to use. Enjoy!</p>
 </div>

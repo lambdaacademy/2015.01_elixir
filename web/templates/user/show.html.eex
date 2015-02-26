@@ -10,11 +10,14 @@
 
   <div class="actions">
     <a href="<%= Router.Helpers.user_path(@conn, :edit, @user.id) %>" class="btn btn-primary">
-      Edit
+      Edit profile
     </a>
 
+    <br>
+    <br>
+
     <form action="/users/<%= @user.id %>" method="post">
-      <button type="submit" class="btn btn-danger">Delete</button>
+      <button type="submit" class="btn btn-danger">Delete profile</button>
     </form>
   </div>
 </div>

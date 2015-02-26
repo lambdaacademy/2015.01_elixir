@@ -1,20 +1,20 @@
 <div class="col-md-12">
-  <h3>Edit: <%= @user.username %></h3>
+  <h3>Edit <%= @user.username %> profile</h3>
 
   <div class="actions">
     <form action="/users/<%= @user.id %>" method="post">
       <input type="hidden" name="csrf_token" value="<%= csrf_token @conn %>" />
       <div class="form-group">
         <p id="errors"></p>
-        <input type="text" name="user[email]" value="<%= @user.email %>" class="form-control" />
-        <input type="password" name="user[password]" value="<%= @user.password %>" class="form-control" />
-        <input type="text" name="user[username]" value="<%= @user.username %>" class="form-control" />
+        E-mail <input type="text" name="user[email]" value="<%= @user.email %>" class="form-control" />
+        Password <input type="password" name="user[password]" value="<%= @user.password %>" class="form-control" />
+        <div class="alert alert-danger" role="alert" style="margin: 0;">Your password is storred in database with plain text. You have been warned.</div>
+        Username <input type="text" name="user[username]" value="<%= @user.username %>" class="form-control" />
       </div>
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>
 
-  <p>Your password is storred in database with plain text. You have been warned.</p>
 </div>
 
 <script>

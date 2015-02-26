@@ -22,13 +22,16 @@
         <%= @inner %>
       </div>
 
-      <footer class="footer">
-        <p>
-          <a href="https://github.com/lambdaacademy/2015.01_elixir/" target="_blank">
-            App made by LambdaAcademy students.
-          </a>
-        </p>
-      </fotter>
     </main>
+
+    <footer class="footer">
+      <div class="row">
+        <div class="col-md-12">
+          App made by <a href="https://github.com/lambdaacademy/2015.01_elixir/" target="_blank">
+            LambdaAcademy students
+          </a>
+      </div>
+      </div>
+    </fotter>
   </body>
 </html>
